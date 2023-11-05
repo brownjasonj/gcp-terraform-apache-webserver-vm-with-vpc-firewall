@@ -1,6 +1,6 @@
 terraform {
   backend "gcs" {
-    bucket = "terraform-state-job-cicdproject"
+    bucket = "udemy-dev-terraform-state-cicd"
     prefix = "terraform/state"
   }
 }
