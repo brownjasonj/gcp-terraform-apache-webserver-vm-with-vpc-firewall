@@ -36,7 +36,7 @@ resource "google_compute_subnetwork" "default" {
 
 # Create a single Compute Engine instance
 resource "google_compute_instance" "default" {
-  name         = "flask-vm"
+  name         = "apache-webserver-vm"
   machine_type = "f1-micro"
   zone         = local.zone
   tags         = ["ssh"]
