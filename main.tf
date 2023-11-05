@@ -1,5 +1,5 @@
 locals {
-  project_id = "udemy-401715"
+  project_id = "udemy-dev-404220"
   region     = "us-central1"
   zone       = "us-central1-b"
 }
