@@ -21,10 +21,10 @@ resource "google_compute_network" "vpc_network" {
   name                    = "my-custom-mode-network"
   auto_create_subnetworks = false
   mtu                     = 1460
-  depends_on = [
-    # In order to be able to create VPC the GoogleAPIs need to have been enabled.
-    google_project_service.compute_service
-  ]
+  # depends_on = [
+  #   # In order to be able to create VPC the GoogleAPIs need to have been enabled.
+  #   google_project_service.compute_service
+  # ]
 }
 
 resource "google_compute_subnetwork" "default" {
