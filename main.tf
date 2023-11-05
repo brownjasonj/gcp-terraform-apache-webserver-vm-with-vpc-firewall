@@ -10,10 +10,18 @@ provider "google" {
   zone    = local.zone
 }
 
+resource "google_project_service" "crm_api" {
+  service = "cloudresourcemanager.googleapis.com"
+}
+
 # This enables the Compute Engine API for the project. Which is required to be able to create a resources (e.g., VPC, VMs)
 resource "google_project_service" "compute_service" {
   project = local.project_id
   service = "compute.googleapis.com"
+  depends_on = [
+    # In order to be able to create VPC the GoogleAPIs need to have been enabled.
+    google_project_service.crm_api
+  ]
 }
 
 # Create a Virtual Private Network (VPC) to place the VM in
