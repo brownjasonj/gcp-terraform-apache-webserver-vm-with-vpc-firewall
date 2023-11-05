@@ -1,7 +1,7 @@
 locals {
-    project_id  = "udemy-401715"
-    region      = "us-central1"
-    zone        = "us-central1-b"
+  project_id = "udemy-401715"
+  region     = "us-central1"
+  zone       = "us-central1-b"
 }
 
 provider "google" {
@@ -44,13 +44,13 @@ resource "google_compute_instance" "default" {
   boot_disk {
     initialize_params {
       image = "projects/debian-cloud/global/images/debian-11-bullseye-v20231010"
-      size = 10
+      size  = 10
     }
     mode = "READ_WRITE"
   }
 
   # Install Flask
-//  metadata_startup_script = "sudo apt-get update; sudo apt-get install -yq build-essential python3-pip rsync; pip install flask"
+  //  metadata_startup_script = "sudo apt-get update; sudo apt-get install -yq build-essential python3-pip rsync; pip install flask"
 
   metadata_startup_script = "sudo apt-get update; sudo apt-get install -y apache2; echo \"Hello world from $(hostname) $(hostname -I)\" > /var/www/html/index.html"
 
