@@ -11,20 +11,20 @@ provider "google" {
 }
 
 # This enables the Compute Engine API for the project. Which is required to be able to create a resources (e.g., VPC, VMs)
-# resource "google_project_service" "compute_service" {
-#   project = local.project_id
-#   service = "compute.googleapis.com"
-# }
+resource "google_project_service" "compute_service" {
+  project = local.project_id
+  service = "compute.googleapis.com"
+}
 
 # Create a Virtual Private Network (VPC) to place the VM in
 resource "google_compute_network" "vpc_network" {
   name                    = "my-custom-mode-network"
   auto_create_subnetworks = false
   mtu                     = 1460
-  # depends_on = [
-  #   # In order to be able to create VPC the GoogleAPIs need to have been enabled.
-  #   google_project_service.compute_service
-  # ]
+  depends_on = [
+    # In order to be able to create VPC the GoogleAPIs need to have been enabled.
+    google_project_service.compute_service
+  ]
 }
 
 resource "google_compute_subnetwork" "default" {
